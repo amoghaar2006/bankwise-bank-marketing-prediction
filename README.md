@@ -1,6 +1,12 @@
 
 # BankWise — Bank Marketing Response Prediction
 
+
+## Live Demo
+
+Try the deployed application: [BankWise — Live App](PASTE_YOUR_STREAMLIT_APP_URL_HERE)
+
+
 A machine learning project that predicts whether a customer is likely to subscribe to a bank term deposit based on customer information and marketing campaign details.
 
 The project compares four classification models and provides an interactive Streamlit application for testing predictions.
