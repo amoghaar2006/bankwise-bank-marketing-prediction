@@ -4,7 +4,9 @@
 
 ## Live Demo
 
-Try the deployed application: [BankWise — Live App](PASTE_YOUR_STREAMLIT_APP_URL_HERE)
+
+Try the deployed application: [BankWise — Live App](https://bankwise-bank-marketing-prediction-xwz5enppzfbqmhmb78w7hq.streamlit.app/)
+
 
 
 A machine learning project that predicts whether a customer is likely to subscribe to a bank term deposit based on customer information and marketing campaign details.
