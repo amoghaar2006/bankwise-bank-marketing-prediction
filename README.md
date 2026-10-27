@@ -109,8 +109,10 @@ The notebook used for data exploration, training and evaluation can also be incl
 ### 1. Clone the repository
 
 ```bash
-git clone YOUR_GITHUB_REPOSITORY_URL
-cd BankMarketing
+
+git clone https://github.com/amoghaar2006/bankwise-bank-marketing-prediction.git
+cd bankwise-bank-marketing-prediction
+
 ```
 
 Replace `YOUR_GITHUB_REPOSITORY_URL` with your repository URL.
