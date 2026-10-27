@@ -79,22 +79,28 @@ The interface includes:
 
 Predictions are estimates and should not be treated as guarantees of actual customer behaviour.
 
+
 ## Project Structure
 
 ```text
 BankMarketing/
 ├── app.py
+├── notebook.ipynb
 ├── bank-full.csv
+├── bank+marketing.zip
 ├── balanced_logistic_regression.pkl
 ├── decision_tree.pkl
 ├── random_forest.pkl
 ├── balanced_random_forest.pkl
 ├── scaler.pkl
 ├── model_columns.pkl
+├── requirements.txt
 ├── README.md
 └── .streamlit/
     └── config.toml
 ```
+
+
 
 The notebook used for data exploration, training and evaluation can also be included in the repository.
 
