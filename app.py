@@ -159,6 +159,32 @@ st.divider()
 
 
 # --------------------------------------------------
+# FORM RESET
+# --------------------------------------------------
+def reset_customer_form():
+    """Restore customer inputs to their original defaults."""
+    defaults = {
+        "age_input": 35,
+        "job_input": "management",
+        "marital_input": "married",
+        "education_input": "secondary",
+        "balance_input": 1000,
+        "default_input": "no",
+        "housing_input": "yes",
+        "loan_input": "no",
+        "contact_input": "cellular",
+        "day_input": 15,
+        "month_input": "jan",
+        "campaign_input": 2,
+        "pdays_input": -1,
+        "previous_input": 0,
+        "poutcome_input": "unknown",
+    }
+    for key, value in defaults.items():
+        st.session_state[key] = value
+
+
+# --------------------------------------------------
 # CUSTOMER INPUT FORM
 # --------------------------------------------------
 st.subheader("Customer Information")
@@ -169,7 +195,7 @@ with st.form("customer_form"):
 
     with left:
         age = st.number_input(
-            "Age", min_value=18, max_value=100, value=35
+            "Age", min_value=18, max_value=100, value=35, key="age_input"
         )
 
         job = st.selectbox(
@@ -179,44 +205,45 @@ with st.form("customer_form"):
                 "blue-collar", "retired", "admin.", "services",
                 "student", "self-employed", "unemployed",
                 "housemaid", "unknown"
-            ]
+            ],
+            key="job_input"
         )
 
         marital = st.selectbox(
             "Marital Status",
-            ["married", "single", "divorced"]
+            ["married", "single", "divorced"], key="marital_input"
         )
 
         education = st.selectbox(
             "Education",
-            ["secondary", "tertiary", "primary", "unknown"]
+            ["secondary", "tertiary", "primary", "unknown"], key="education_input"
         )
 
         balance = st.number_input(
-            "Account Balance (€)", value=1000
+            "Account Balance (€)", value=1000, key="balance_input"
         )
 
         default = st.selectbox(
-            "Credit in Default", ["no", "yes"]
+            "Credit in Default", ["no", "yes"], key="default_input"
         )
 
         housing = st.selectbox(
-            "Housing Loan", ["yes", "no"]
+            "Housing Loan", ["yes", "no"], key="housing_input"
         )
 
     with right:
         loan = st.selectbox(
-            "Personal Loan", ["no", "yes"]
+            "Personal Loan", ["no", "yes"], key="loan_input"
         )
 
         contact = st.selectbox(
             "Contact Method",
-            ["cellular", "telephone", "unknown"]
+            ["cellular", "telephone", "unknown"], key="contact_input"
         )
 
         day = st.number_input(
             "Last Contact Day",
-            min_value=1, max_value=31, value=15
+            min_value=1, max_value=31, value=15, key="day_input"
         )
 
         month = st.selectbox(
@@ -224,34 +251,43 @@ with st.form("customer_form"):
             [
                 "jan", "feb", "mar", "apr", "may", "jun",
                 "jul", "aug", "sep", "oct", "nov", "dec"
-            ]
+            ],
+            key="month_input"
         )
 
         campaign = st.number_input(
             "Contacts in Current Campaign",
-            min_value=1, max_value=100, value=2
+            min_value=1, max_value=100, value=2, key="campaign_input"
         )
 
         pdays = st.number_input(
             "Days Since Previous Campaign Contact (-1 if none)",
-            min_value=-1, max_value=999, value=-1
+            min_value=-1, max_value=999, value=-1, key="pdays_input"
         )
 
         previous = st.number_input(
             "Previous Campaign Contacts",
-            min_value=0, value=0
+            min_value=0, value=0, key="previous_input"
         )
 
         poutcome = st.selectbox(
             "Previous Campaign Outcome",
-            ["unknown", "success", "failure", "other"]
+            ["unknown", "success", "failure", "other"], key="poutcome_input"
         )
 
-    submitted = st.form_submit_button(
-        "Predict Subscription",
-        type="primary",
-        use_container_width=True
-    )
+    predict_col, reset_col = st.columns([3, 1])
+    with predict_col:
+        submitted = st.form_submit_button(
+            "Predict Subscription",
+            type="primary",
+            use_container_width=True
+        )
+    with reset_col:
+        st.form_submit_button(
+            "↻ Reset",
+            on_click=reset_customer_form,
+            use_container_width=True
+        )
 
 # --------------------------------------------------
 # PREDICTIONS
